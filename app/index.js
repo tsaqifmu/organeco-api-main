@@ -1,6 +1,4 @@
 import express from "express";
-import dotenv from "dotenv";
-import connectDB from "./database/mongodb";
 
 const app = express();
 
@@ -10,11 +8,8 @@ import authRouter from "./routes/authRoute"; //LETS MAKE THIS ONE
 // MIDDLEWARE
 import pageNotFound from "./utils/pageNotFound";
 
-// CONFIGURE DOTENV
-dotenv.config();
-
 // CONFIGURE DATABASE
-import "./database/mongodb";
+import connectDB from "./database/mongodb";
 
 // PORT AND PATH
 const PORT = process.env.PORT || 8080;
