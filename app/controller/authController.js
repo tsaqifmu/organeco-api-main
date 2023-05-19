@@ -45,7 +45,7 @@ const login = async (req, res) => {
       return;
     }
 
-    const isValidPassword = await bcrypt.compare(
+    const isValidPassword = await bcryptUtils.compare(
       request.password,
       user.password,
     );
