@@ -22,7 +22,7 @@ const register = async (req, res) => {
     const user = new User(request);
 
     const result = await user.save();
-    response = new Response.Success(false, null, result);
+    response = new Response.Success(false, "User Created", result);
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
