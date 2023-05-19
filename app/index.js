@@ -3,13 +3,13 @@ import express from "express";
 const app = express();
 
 // ENDPOINT
-import authRouter from "./routes/authRoute"; //LETS MAKE THIS ONE
+import authRouter from "./routes/authRoute.js";
 
 // MIDDLEWARE
-import pageNotFound from "./utils/pageNotFound";
+import pageNotFound from "./utils/pageNotFound.js";
 
 // CONFIGURE DATABASE
-import connectDB from "./database/mongodb";
+import connectDB from "./database/mongodb.js";
 
 // PORT AND PATH
 const PORT = process.env.PORT || 8080;
@@ -25,6 +25,10 @@ app.use(appendUrl("/auth"), authRouter);
 
 // ENDPOINT NOT CREATED
 app.use("/", pageNotFound);
+
+// app.listen(PORT, () =>
+//   console.log(`Listening on port http://localhost:${PORT}`),
+// );
 
 connectDB().then(() => {
   app.listen(PORT, function () {

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import dotenv from "dotenv";
 // mongoose
 //   .connect(process.env.MONGO_DB)
 //   .then(() => console.log("Database Connected"))
@@ -15,7 +15,7 @@ import mongoose from "mongoose";
 // })();
 
 if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
+  dotenv.config();
 }
 
 const connectDB = async () => {

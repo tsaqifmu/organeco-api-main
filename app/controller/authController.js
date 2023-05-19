@@ -1,11 +1,11 @@
-import Response from "../model/response";
-import User from "../model/user";
-import bcrypt from "../utils/bcrypt";
-import userValidator from "../utils/userValidator";
+import Response from "../model/response.js";
+import User from "../model/user.js";
+import bcryptUtils from "../utils/bcrypt.js";
+import userValidator from "../utils/userValidator.js";
 import httpStatus from "http-status";
 // import validator from "validator";
 
-const signUp = async (req, res) => {
+const register = async (req, res) => {
   let response = null;
   try {
     const request = await userValidator.validateAsync(req.body);
@@ -16,7 +16,7 @@ const signUp = async (req, res) => {
       return;
     }
 
-    const hashedPassword = await bcrypt.hash(request.password);
+    const hashedPassword = await bcryptUtils.hash(request.password);
     request.password = hashedPassword;
 
     const user = new User(request);
@@ -29,3 +29,5 @@ const signUp = async (req, res) => {
     res.status(httpStatus.BAD_REQUEST).json(response);
   }
 };
+
+export default register;

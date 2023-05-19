@@ -1,9 +1,17 @@
-function createError(error, message) {
-  return { error: error, message: message };
+function Error(error, message) {
+  this.error = error;
+  this.message = message;
 }
 
-function createSuccess(error, message, data) {
-  return { error: error, message: message, data: data };
+function Success(error, message, data) {
+  this.error = error;
+  this.message = message;
+  this.data = data;
 }
 
-export { createError as Error, createSuccess as Success };
+const Response = {
+  Error,
+  Success,
+};
+
+export default Response;
