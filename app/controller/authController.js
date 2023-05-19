@@ -24,7 +24,8 @@ const register = async (req, res) => {
 
     const user = new User(request);
     const result = await user.save();
-    response = new Response.Success(false, "User Created", result);
+
+    response = new Response.Success(false, "User Created");
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
@@ -56,8 +57,12 @@ const login = async (req, res) => {
     }
 
     const createJwtToken = jwt.sign({ id: user._id }, process.env.KEY);
-    const data = { token: createJwtToken };
-    response = new Response.Success(false, "success", data);
+    const loginResult = {
+      userId: user._id,
+      name: user.name,
+      token: createJwtToken,
+    };
+    response = new Response.Success(false, "success", loginResult);
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
