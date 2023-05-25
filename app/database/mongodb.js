@@ -1,22 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-// mongoose
-//   .connect(process.env.MONGO_DB)
-//   .then(() => console.log("Database Connected"))
-//   .catch((error) => console.log(error.message));
+// ==>CLYCLIC<==
+// if (process.env.NODE_ENV !== "production") {
+//   dotenv.config();
+// }
 
-// (async () => {
-//   try {
-//     await mongoose.connect(process.env.MONGO_DB);
-//     console.log("Database Connected");
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// })();
-
-if (process.env.NODE_ENV !== "production") {
-  dotenv.config();
-}
+// ==>GCP<==
+dotenv.config();
 
 const connectDB = async () => {
   try {
