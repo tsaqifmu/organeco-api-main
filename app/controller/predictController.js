@@ -15,6 +15,7 @@ const predict = async (req, res) => {
 
     response = new Response.Success(false, "berhasil masuk bos");
     return res.status(httpStatus.OK).json(response);
+    
   } catch (error) {
     response = new Response.Error(true, error.message);
     return res.status(httpStatus.BAD_REQUEST).json(response);
