@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-// ==>CLYCLIC<==
-// if (process.env.NODE_ENV !== "production") {
-//   dotenv.config();
-// }
 
-// ==>GCP<==
-dotenv.config();
+// ==>CLYCLIC<==
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
+
+// // ==>GCP<==
+// dotenv.config();
 
 const connectDB = async () => {
   try {

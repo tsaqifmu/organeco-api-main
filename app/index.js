@@ -4,6 +4,7 @@ const app = express();
 
 // ENDPOINT
 import authRouter from "./routes/authRoute.js";
+import predictRoute from "./routes/predictRoute.js";
 
 // MIDDLEWARE
 import pageNotFound from "./utils/pageNotFound.js";
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ROUTER
 app.use(appendUrl("/auth"), authRouter);
+app.use(appendUrl("/predict"), predictRoute);
 
 // ENDPOINT NOT CREATED
 app.use("/", pageNotFound);

@@ -1,9 +1,11 @@
 import httpStatus from "http-status";
 import jwt from "jsonwebtoken";
-// import validator from "validator";
 
+// import models
 import Response from "../model/response.js";
 import User from "../model/user.js";
+
+// import utils
 import bcryptUtils from "../utils/bcrypt.js";
 import registerValidator from "../utils/registerValidator.js";
 import loginValidator from "../utils/loginValidator.js";
@@ -15,21 +17,20 @@ const register = async (req, res) => {
     const users = await User.findOne({ email: request.email });
     if (users) {
       response = new Response.Error(true, "Email already exist");
-      res.status(httpStatus.BAD_REQUEST).json(response);
-      return;
+      return res.status(httpStatus.BAD_REQUEST).json(response);
     }
 
     const hashedPassword = await bcryptUtils.hash(request.password);
     request.password = hashedPassword;
 
-    const user = new User(request);
-    const result = await user.save();
+    const newUser = new User(request);
+    await newUser.save();
 
     response = new Response.Success(false, "User Created");
-    res.status(httpStatus.OK).json(response);
+    return res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
-    res.status(httpStatus.BAD_REQUEST).json(response);
+    return res.status(httpStatus.BAD_REQUEST).json(response);
   }
 };
 
@@ -42,8 +43,7 @@ const login = async (req, res) => {
     const user = await User.findOne({ email: request.email });
     if (!user) {
       response = new Response.Error(true, signInErrorMessage);
-      res.status(httpStatus.BAD_REQUEST).json(response);
-      return;
+      return res.status(httpStatus.BAD_REQUEST).json(response);
     }
 
     const isValidPassword = await bcryptUtils.compare(
@@ -52,8 +52,7 @@ const login = async (req, res) => {
     );
     if (!isValidPassword) {
       response = new Response.Error(true, signInErrorMessage);
-      res.status(httpStatus.BAD_REQUEST).json(response);
-      return;
+      return res.status(httpStatus.BAD_REQUEST).json(response);
     }
 
     const createJwtToken = jwt.sign({ id: user._id }, process.env.KEY);
@@ -66,7 +65,7 @@ const login = async (req, res) => {
     res.status(httpStatus.OK).json(response);
   } catch (error) {
     response = new Response.Error(true, error.message);
-    res.status(httpStatus.BAD_REQUEST).json(response);
+    return res.status(httpStatus.BAD_REQUEST).json(response);
   }
 };
 

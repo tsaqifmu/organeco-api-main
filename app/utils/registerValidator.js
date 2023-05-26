@@ -5,5 +5,5 @@ const userValidator = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().min(6).max(255).required(),
 });
-export default userValidator
 
+export default userValidator;
