@@ -49,3 +49,24 @@ https://pepek.cyclic.app/api/v1
     }
 }
 ```
+
+## Predict calculator
+
+- URL 
+  - /predict
+
+- Method
+  - POST
+
+- Request Body
+  - `ph` as `number`
+  - `humidity` as `number`
+  - `temperature` as `number`
+
+- Response
+```json
+{
+  "error": false,
+  "message": "Data added successfully"
+}
+```
