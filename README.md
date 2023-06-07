@@ -45,6 +45,7 @@ https://pepek.cyclic.app/api/v1
     "data": {
         "userId": "6466d83c42c31c39bde01f42",
         "name": "oca",
+        "email": "oca@gmail.com",
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjZkODNjNDJjMzFjMzliZGUwMWY0MiIsImlhdCI6MTY4NDQ2NTk3NX0.seneRy4q2BuFMnf4FDR8U3oTTnQCN41vjyQd0CXvrfE"
     }
 }
