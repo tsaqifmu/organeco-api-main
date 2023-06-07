@@ -59,6 +59,7 @@ const login = async (req, res) => {
     const loginResult = {
       userId: user._id,
       name: user.name,
+      email: user.email,
       token: createJwtToken,
     };
     response = new Response.Success(false, "success", loginResult);
