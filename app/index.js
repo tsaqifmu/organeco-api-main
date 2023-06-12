@@ -28,10 +28,6 @@ app.use(appendUrl("/predict"), predictRoute);
 // ENDPOINT NOT CREATED
 app.use("/", pageNotFound);
 
-// app.listen(PORT, () =>
-//   console.log(`Listening on port http://localhost:${PORT}`),
-// );
-
 connectDB().then(() => {
   app.listen(PORT, function () {
     console.log(
