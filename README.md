@@ -1,5 +1,7 @@
 # Documentation
 
+please include .env during deploy
+
 ## Endpoint
 https://pepek.cyclic.app/api/v1
 
@@ -60,8 +62,13 @@ https://pepek.cyclic.app/api/v1
   - POST
 
 - Request Body
-  - `ph` as `number`
+  - `crop_type` as `string`
   - `humidity` as `number`
+  - `moisture` as `number`
+  - `nitrogen` as `number`
+  - `phosphorous` as `number`
+  - `potassium` as `number`
+  - `soil_type` as `string`
   - `temperature` as `number`
 
 - Response
