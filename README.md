@@ -3,7 +3,7 @@
 please include .env during deploy
 
 ## Endpoint
-https://pepek.cyclic.app/api/v1
+https://organeco-api.et.r.appspot.com/api/v1
 
 ## Register
 
