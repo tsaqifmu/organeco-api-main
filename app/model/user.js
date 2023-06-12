@@ -18,15 +18,6 @@ const userSchema = new mongoose.Schema({
     maxlength: 255,
   },
 
-  // imageUrl: {
-  //   type: String,
-  //   required: true,
-  // },
-
-  // createdAt: {
-  //   type: String,
-  //   default: Date.now,
-  // },
 });
 
 const User = mongoose.model("User", userSchema);
